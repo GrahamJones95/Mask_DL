@@ -98,7 +98,7 @@ class FaceMasker:
 
     def _mask_face(self, face_landmark: dict):
         nose_bridge = face_landmark['nose_bridge']
-        nose_point = nose_bridge[len(nose_bridge) * 9999 // 10000]
+        nose_point = nose_bridge[len(nose_bridge) * 1 // 10000]
         nose_v = np.array(nose_point)
 
         chin = face_landmark['chin']
