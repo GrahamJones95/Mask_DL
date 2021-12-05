@@ -53,7 +53,7 @@ def create_mask(image_path):
 
 
 class FaceMasker:
-    KEY_FACIAL_FEATURES = ('nose_bridge', 'chin')
+    KEY_FACIAL_FEATURES = ('lips', 'chin')
 
     def __init__(self, face_path, mask_path, show=False, model='hog'):
         self.face_path = face_path
@@ -97,8 +97,8 @@ class FaceMasker:
             print('Found no face.')
 
     def _mask_face(self, face_landmark: dict):
-        nose_bridge = face_landmark['nose_bridge']
-        nose_point = nose_bridge[len(nose_bridge) * 1 // 10000]
+        nose_bridge = face_landmark['lips']
+        nose_point = nose_bridge[len(nose_bridge) * 1 // 4]
         nose_v = np.array(nose_point)
 
         chin = face_landmark['chin']
@@ -127,7 +127,7 @@ class FaceMasker:
         mask_right_img = mask_right_img.resize((mask_right_width, new_height))
 
         # merge mask
-        size = (mask_left_img.width + mask_right_img.width, new_height)
+        size = (mask_left_img.width + mask_r0980iight_img.width, new_height)
         mask_img = Image.new('RGBA', size)
         mask_img.paste(mask_left_img, (0, 0), mask_left_img)
         mask_img.paste(mask_right_img, (mask_left_img.width, 0), mask_right_img)
