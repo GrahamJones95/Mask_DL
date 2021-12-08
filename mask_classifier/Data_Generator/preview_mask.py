@@ -13,7 +13,5 @@ images = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if os.pa
 for i in range(len(images)):
     print("the path of the image is", images[i])
     type = random.choice(list(mask.FaceMasker.Mask_Type))
-    #type = mask.FaceMasker.Mask_Type.MASK_TYPE_INCORRECT
     mask.create_mask(images[i],dest_path,type = type)
     
-
